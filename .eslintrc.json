@@ -1,6 +1,8 @@
 {
   "extends": ["next/core-web-vitals", "airbnb-base"],
+  "plugins": ["prefer-arrow-functions"],
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "import/extensions": "off"
   }
 }
