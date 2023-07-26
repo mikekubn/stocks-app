@@ -3,6 +3,7 @@
   "plugins": ["prefer-arrow-functions"],
   "rules": {
     "no-unused-vars": "warn",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/no-unresolved": "off"
   }
 }

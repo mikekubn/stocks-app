@@ -2,6 +2,7 @@ import React from 'react';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Navigation from '@/components/Navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,7 +13,12 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
-    <body className={inter.className}>{children}</body>
+    <body className={inter.className}>
+      <header className="bg-indigo-700 text-white h-20 fixed z-[101] top-0 w-full">
+        <Navigation />
+      </header>
+      <main>{children}</main>
+    </body>
   </html>
 );
 
