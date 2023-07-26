@@ -1,4 +1,22 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    appDir: true,
+    typedRoutes: true,
+  },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
+  webpack: (config) => {
+    // eslint-disable-next-line no-param-reassign
+    config.resolve.fallback = { fs: false };
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;
