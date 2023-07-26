@@ -4,6 +4,7 @@
   "rules": {
     "no-unused-vars": "warn",
     "import/extensions": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "operator-linebreak": "off"
   }
 }
