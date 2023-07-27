@@ -17,7 +17,7 @@ const RootLayout = async ({ children }: LayoutProps): Promise<React.ReactElement
   <html lang="en">
     <body className={inter.className}>
       <Providers>
-        <header className="bg-indigo-700 text-white h-20 fixed z-[101] top-0 w-full">
+        <header className="bg-slate-100/80 text-sky-900 h-20 fixed z-[101] top-0 w-full backdrop-blur-2xl">
           <Navigation />
         </header>
         <main>{children}</main>

@@ -1,7 +1,20 @@
 import LayoutContainer from '@/components/Containers';
 
 const Home = () => (
-  <LayoutContainer size="large" className="bg-rose-800">
+  <LayoutContainer size="large">
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
+    <p>Homepage</p>
     <p>Homepage</p>
   </LayoutContainer>
 );

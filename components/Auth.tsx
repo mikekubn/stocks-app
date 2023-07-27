@@ -3,6 +3,7 @@
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { IClassName } from '@/types';
+import clsx from 'clsx';
 import { ParagraphLarge } from './Typography';
 
 const Auth = ({ className }: IClassName) => {
@@ -14,7 +15,10 @@ const Auth = ({ className }: IClassName) => {
   return (
     <div className={className}>
       <button
-        className="h-10 w-32 bg-slate-600 rounded-2xl hover:bg-slate-500 shadow-lg"
+        className={clsx('h-10 w-32 rounded-lg text-white shadow-lg', {
+          'bg-sky-600 hover:bg-sky-700': !isAuthenticated,
+          'bg-rose-600 hover:bg-rose-700': isAuthenticated,
+        })}
         onClick={(e) => {
           e.preventDefault();
 
