@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface IClassName {
-  className: string;
+  className?: string;
 }
 
 export type LayoutProps = {
