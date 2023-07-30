@@ -102,6 +102,7 @@ const ClientSharesCmp = () => {
       <Chart
         options={{
           xaxis: {
+            type: 'datetime',
             categories: timestamp,
           },
         }}
