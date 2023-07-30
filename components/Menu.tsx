@@ -20,11 +20,8 @@ const navigation = [
     name: 'Stocks',
     route: '/stocks',
   },
-  {
-    name: 'News',
-    route: '/news',
-  },
 ];
+
 const Menu = ({ className }: IClassName): React.ReactElement => {
   const pathname = usePathname();
 
