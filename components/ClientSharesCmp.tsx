@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { useStocks } from '@/hooks/useStocks';
 import { DateTime } from 'luxon';
-
 import {
   H3,
   ParagraphBase,
@@ -12,7 +12,10 @@ import {
   ParagraphSmall,
 } from './Typography';
 
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 const minDate = '2023-01-01';
+const getDateFromMilis = (t: number) =>
+  DateTime.fromMillis(t).toLocaleString({ year: '2-digit', month: 'short', day: 'numeric' });
 
 const ClientSharesCmp = () => {
   const currentDate = DateTime.now().toFormat('yyyy-MM-dd');
@@ -32,6 +35,9 @@ const ClientSharesCmp = () => {
 
     setStockData({ share, dateTo });
   };
+
+  const closePrice = data?.results?.map(({ c }) => c) ?? [];
+  const timestamp = data?.results?.map(({ t }) => getDateFromMilis(t)) ?? [];
 
   return (
     <section className="text-slate-800 flex flex-1 flex-col items-center justify-center">
@@ -91,6 +97,23 @@ const ClientSharesCmp = () => {
           {data?.ticker}
         </ParagraphLarge>
       </div>
+      <div className="h-8" />
+
+      <Chart
+        options={{
+          xaxis: {
+            categories: timestamp,
+          },
+        }}
+        series={[
+          {
+            name: 'Price',
+            data: closePrice,
+          },
+        ]}
+        type="line"
+        className="w-[340px] md:w-[500px]"
+      />
     </section>
   );
 };
