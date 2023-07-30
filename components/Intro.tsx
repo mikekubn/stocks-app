@@ -13,7 +13,7 @@ const Intro = (): React.ReactElement => (
     className="flex flex-col flex-1 justify-center items-center h-screen">
     <H1
       font="regular"
-      className="!text-9xl pb-2 bg-gradient-to-r from-blue-700 to-red-100 bg-clip-text text-transparent">
+      className="!text-5xl md:!text-9xl pb-2 bg-gradient-to-r from-blue-700 to-red-100 bg-clip-text text-transparent">
       Stocks &amp; Crypto-Market
     </H1>
     <H1 font="thin" className="mt-10">

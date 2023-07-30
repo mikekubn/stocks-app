@@ -22,7 +22,7 @@ const RootLayout = async ({ children }: LayoutProps): Promise<React.ReactElement
           <Navigation />
         </header>
         <main>{children}</main>
-        <footer className="h-20 flex flex-row justify-center items-center">
+        <footer className="h-20 flex flex-row justify-center items-center mt-10 md:mt-0">
           <a
             className="hover:underline inline-flex gap-3"
             href="https://github.com/mikekubn/stocks-app"

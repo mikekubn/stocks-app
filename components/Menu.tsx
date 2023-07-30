@@ -11,7 +11,7 @@ import { ParagraphBase } from './Typography';
 
 const styles = 'ring ring-sky-900 ring-1';
 
-const navigation = [
+export const navigation = [
   {
     name: 'Home',
     route: '/',

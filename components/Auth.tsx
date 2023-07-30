@@ -15,7 +15,7 @@ const Auth = ({ className }: IClassName) => {
   return (
     <div className={className}>
       <button
-        className={clsx('h-10 w-32 rounded-lg text-white shadow-lg', {
+        className={clsx('h-8 w-24 md:h-10 md:w-32 rounded-lg text-white shadow-lg', {
           'bg-sky-600 hover:bg-sky-700': !isAuthenticated,
           'bg-rose-600 hover:bg-rose-700': isAuthenticated,
         })}
