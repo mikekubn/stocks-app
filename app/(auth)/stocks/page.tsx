@@ -1,7 +1,10 @@
-'use client';
-
+import StocksCmp from '@/components/StockCmp';
 import React from 'react';
 
-const Stocks = () => <>Stocks</>;
+const Stocks = async () => (
+  <>
+    <StocksCmp />
+  </>
+);
 
 export default Stocks;
