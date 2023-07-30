@@ -98,7 +98,6 @@ const ClientSharesCmp = () => {
         </ParagraphLarge>
       </div>
       <div className="h-8" />
-
       <Chart
         options={{
           xaxis: {
