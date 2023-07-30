@@ -18,7 +18,7 @@ export const useStocks = ({
     `${stock}-${range}-${from}-${to}`,
     () => stocks({ stock, range, from, to }),
     {
-      refreshInterval: 120000,
+      refreshInterval: 240000,
     },
   );
 

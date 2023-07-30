@@ -1,10 +1,6 @@
-import StocksCmp from '@/components/StockCmp';
 import React from 'react';
+import ClientSharesCmp from '@/components/ClientSharesCmp';
 
-const Stocks = async () => (
-  <>
-    <StocksCmp />
-  </>
-);
+const Stocks = () => <ClientSharesCmp />;
 
 export default Stocks;

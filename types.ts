@@ -28,6 +28,7 @@ export interface IStockResult {
 
 export interface IStocksResponse {
   status: 'OK' | 'ERROR' | 'DELAYED';
+  error: string;
   ticker: string;
   results: IStockResult[];
 }
