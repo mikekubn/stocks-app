@@ -14,7 +14,7 @@ interface IMoveAnimationProps extends IClassName {
 const MoveAnimation = ({ children, direction, className }: IMoveAnimationProps) => {
   const ref = useRef<ElementRef<'section'>>(null);
   const isInView = useInView(ref);
-  const x = direction === 'left' ? 'translateX(-200px)' : 'translateX(800px)';
+  const x = direction === 'left' ? 'translateX(-200px)' : 'translateX(0)';
 
   return (
     <motion.section
