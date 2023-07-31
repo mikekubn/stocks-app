@@ -3,7 +3,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { useStocks } from '@/hooks/useStocks';
-import { DateTime } from 'luxon';
+import { getCurrentDate, getDateFromMilis } from '@/utils/date';
 import {
   H3,
   ParagraphBase,
@@ -14,11 +14,9 @@ import {
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 const minDate = '2023-01-01';
-const getDateFromMilis = (t: number) =>
-  DateTime.fromMillis(t).toLocaleString({ year: '2-digit', month: 'short', day: 'numeric' });
 
 const ClientSharesCmp = () => {
-  const currentDate = DateTime.now().toFormat('yyyy-MM-dd');
+  const currentDate = getCurrentDate('yyyy-MM-dd');
   const [share, setShare] = React.useState('AAPL');
   const [dateTo, setDateTo] = React.useState(currentDate);
   const [stockData, setStockData] = React.useState({ share, dateTo });
