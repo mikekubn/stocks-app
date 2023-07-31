@@ -11,7 +11,7 @@ const AuthLayout = async ({ children }: LayoutProps): Promise<React.ReactElement
     redirect('/api/auth/signin');
   }
 
-  return <section className="mt-40">{children}</section>;
+  return <section className="h-screen pt-32">{children}</section>;
 };
 
 export default AuthLayout;

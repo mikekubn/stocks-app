@@ -2,8 +2,10 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useStocks } from '@/hooks/useStocks';
 import { getCurrentDate, getDateFromMilis } from '@/utils/date';
+import { IStocksResponse } from '@/types';
 import {
   H3,
   ParagraphBase,
@@ -14,6 +16,33 @@ import {
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 const minDate = '2023-01-01';
+
+const HeaderShares = ({
+  isLoading,
+  data,
+}: {
+  isLoading: boolean;
+  data?: IStocksResponse;
+}): React.ReactElement => (
+  <>
+    <H3 font="semibold" className="text-slate-800">
+      Find your share
+    </H3>
+    <div className="mt-10 text-center">
+      <ParagraphBase font="regular">
+        Status of request: {isLoading ? 'LOADING...' : data?.status}
+      </ParagraphBase>
+      <ParagraphExtraSmall font="bold" className="text-red-500">
+        Requests to backend are limited to 5 per minute.
+      </ParagraphExtraSmall>
+      {data?.status === 'ERROR' && (
+        <ParagraphExtraSmall className="my-4 text-red-700" font="bold">
+          {data?.error}
+        </ParagraphExtraSmall>
+      )}
+    </div>
+  </>
+);
 
 const ClientSharesCmp = () => {
   const currentDate = getCurrentDate('yyyy-MM-dd');
@@ -37,24 +66,27 @@ const ClientSharesCmp = () => {
   const closePrice = data?.results?.map(({ c }) => c) ?? [];
   const timestamp = data?.results?.map(({ t }) => getDateFromMilis(t)) ?? [];
 
+  if (isLoading) {
+    <section className="text-slate-800 flex flex-col items-center">
+      <HeaderShares isLoading={isLoading} data={data} />
+    </section>;
+  }
+
+  if (data?.status === 'ERROR') {
+    return (
+      <section className="text-slate-800 flex flex-col items-center">
+        <HeaderShares isLoading={isLoading} data={data} />
+        <ParagraphLarge font="regular" className="my-10">
+          Sorry something went wrong. Please try again later.
+        </ParagraphLarge>
+        <ExclamationCircleIcon className="w-20 h-20 text-red-500" />
+      </section>
+    );
+  }
+
   return (
     <section className="text-slate-800 flex flex-1 flex-col items-center justify-center">
-      <H3 font="semibold" className="text-slate-800">
-        Find your share
-      </H3>
-      <div className="mt-10 text-center">
-        <ParagraphBase font="regular">
-          Status of request: {isLoading ? 'LOADING...' : data?.status}
-        </ParagraphBase>
-        <ParagraphExtraSmall font="bold" className="text-red-500">
-          Requests to backend are limited to 5 per minute.
-        </ParagraphExtraSmall>
-        {data?.status === 'ERROR' && (
-          <ParagraphExtraSmall className="my-4 text-red-700" font="bold">
-            {data?.error}
-          </ParagraphExtraSmall>
-        )}
-      </div>
+      <HeaderShares isLoading={isLoading} data={data} />
       <div className="my-10 flex flex-1 flex-col items-end md:flex-row gap-4">
         <div className="flex flex-col">
           <label htmlFor="share">
